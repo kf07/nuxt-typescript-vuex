@@ -26,3 +26,8 @@ nuxt2.9のNuxtパッケージを追加
 ```bash
 npm i -D @nuxt/typescript-runtime @nuxt/typescript-build
 ```
+
+nuxt-eslint
+```bash
+npm i -D @nuxtjs/eslint-config-typescript typescript-eslint-parser
+```
