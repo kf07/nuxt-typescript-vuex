@@ -39,6 +39,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
+  buildModules: ['@nuxt/typescript-build'],
   /*
    ** Axios module configuration
    */
