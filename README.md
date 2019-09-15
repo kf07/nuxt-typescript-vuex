@@ -21,3 +21,8 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 # nuxt-typescript-vuex
+
+nuxt2.9のNuxtパッケージを追加
+```bash
+npm i -D @nuxt/typescript-runtime @nuxt/typescript-build
+```
