@@ -1,11 +1,11 @@
-import { Getters, Mutations, Actions} from "@/store/types";
-import { State, IGetters, IMutations, IActions } from "@/store/counterType";
+import { Getters, Mutations, Actions} from 'vuex'
+import { S, G, M, A } from './types'
 
-const state: State = {
+export const state = (): S => ({
   count: 0
-}
+})
 
-const getters: Getters<State, IGetters> = {
+export const getters: Getters<S, G> = {
   double(state) {
     return state.count * 2
   },
@@ -17,7 +17,7 @@ const getters: Getters<State, IGetters> = {
   }
 }
 
-const mutations: Mutations<State, IMutations> = {
+export const mutations: Mutations<S, M> = {
   setCount(state, payload) {
     state.count = payload.amount
   },
@@ -26,10 +26,13 @@ const mutations: Mutations<State, IMutations> = {
   },
   increment(state) {
     state.count++
+  },
+  decrement(state) {
+    state.count++
   }
 }
 
-const actions: Actions<State, IActions, IGetters, IMutations> = {
+export const actions: Actions<S, A, G, M> = {
   asyncSetCount(ctx, payload) {
     ctx.commit('setCount', {amount: payload.amount})
   },
@@ -38,13 +41,16 @@ const actions: Actions<State, IActions, IGetters, IMutations> = {
   },
   asyncIncrement(ctx) {
     ctx.commit('increment')
+  },
+  asyncDecrement(ctx) {
+    ctx.commit('decrement')
   }
 }
 
-export default {
-  namespaced: true,
-  state,
-  getters,
-  mutations,
-  actions
-}
+// export default {
+//   namespaced: true,
+//   state,
+//   getters,
+//   mutations,
+//   actions
+// }

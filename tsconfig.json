@@ -9,10 +9,14 @@
       "dom"
     ],
     "esModuleInterop": true,
-    "allowJs": true,
+    "experimentalDecorators": true,
+    "jsx": "preserve",
     "sourceMap": true,
     "strict": true,
+    "noImplicitAny": true,
     "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
     "baseUrl": ".",
     "paths": {
       "~/*": [
@@ -22,12 +26,20 @@
         "./*"
       ]
     },
+    "allowJs": true,
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxtjs/axios",
+      "./types",
     ]
   },
-  "exclude": [
-    "node_modules"
+  "include": [
+    "components/**/*.ts",
+    "layouts/**/*.ts",
+    "middleware/**/*.ts",
+    "pages/**/*.ts",
+    "plugins/**/*.ts",
+    "server/**/*.ts",
+    "store/**/*.ts",
   ]
 }

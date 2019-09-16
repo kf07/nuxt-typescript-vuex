@@ -1,22 +1,45 @@
-type Getters<S, G, RS = {}, RG = {}> = {
-  [K in keyof G]: (state: S, getters: G, rootState: RS, rootGetters: RG) => G[K]
+export interface S {
+  count: number
 }
 
-type Mutations<S, M> = { [K in keyof M]: (state: S, payload: M[K]) => void }
-
-type Commit<M> = <T extends keyof M>(type: T, payload?: M[T]) => void
-type Dispatch<A> = <T extends keyof A>(type: T, payload?: A[T]) => any
-
-type Context<S, A, G, M, RS, RG> = {
-  commit : Commit<M>
-  dispatch: Dispatch<A>
-  state: S
-  getters: G
-  rootState: RS
-  rootGetters: RG
-}
-type Actions<S, A, G = {}, M = {}, RS = {}, RG = {}> = {
-  [K in keyof A]: (ctx: Context<S, A, G, M, RS, RG>, payload: A[K]) => any
+export interface G {
+  double: number
+  expo2: number
+  expo: (amount: number) => number
 }
 
-export { Getters, Mutations, Actions }
+export interface RG {
+  'counter/double': G['double']
+  'counter/expo2': G['expo2']
+  'counter/expo': G['expo']
+}
+
+export interface M {
+  setCount: { amount: number }
+  multi: number
+  increment: void
+  decrement: void
+}
+
+export interface RM {
+  'counter/setCount': M['setCount']
+  'counter/multi': M['multi']
+  'counter/increment': M['increment']
+  'counter/decrement': M['decrement']
+}
+
+export interface A {
+  asyncSetCount: { amount: number }
+  asyncMulti: number
+  asyncIncrement: void
+  asyncDecrement: void
+}
+
+export interface RA {
+  'counter/asyncSetCount': A['asyncSetCount']
+  'counter/asyncMulti': A['asyncMulti']
+  'counter/asyncIncrement': A['asyncIncrement']
+  'counter/asyncDecrement': A['asyncDecrement']
+}
+
+
