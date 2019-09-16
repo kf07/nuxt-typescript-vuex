@@ -1,10 +1,12 @@
-import { Getters, Mutations, Actions} from 'vuex'
-import { S, G, M, A } from './types'
-
+import { Getters, Mutations, Actions } from 'vuex'
+import { S, G, M, A } from './type'
+// ______________________________________________________
+//
 export const state = (): S => ({
   count: 0
 })
-
+// ______________________________________________________
+//
 export const getters: Getters<S, G> = {
   double(state) {
     return state.count * 2
@@ -16,7 +18,8 @@ export const getters: Getters<S, G> = {
     return amount => state.count ** amount
   }
 }
-
+// ______________________________________________________
+//
 export const mutations: Mutations<S, M> = {
   setCount(state, payload) {
     state.count = payload.amount
@@ -28,13 +31,14 @@ export const mutations: Mutations<S, M> = {
     state.count++
   },
   decrement(state) {
-    state.count++
+    state.count--
   }
 }
-
+// ______________________________________________________
+//
 export const actions: Actions<S, A, G, M> = {
   asyncSetCount(ctx, payload) {
-    ctx.commit('setCount', {amount: payload.amount})
+    ctx.commit('setCount', { amount: payload.amount })
   },
   asyncMulti(ctx, payload) {
     ctx.commit('multi', payload)
@@ -46,11 +50,3 @@ export const actions: Actions<S, A, G, M> = {
     ctx.commit('decrement')
   }
 }
-
-// export default {
-//   namespaced: true,
-//   state,
-//   getters,
-//   mutations,
-//   actions
-// }
